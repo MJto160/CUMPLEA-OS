@@ -729,13 +729,37 @@ function PocoyoMascot({ size = 120 }: { size?: number }) {
 
 export default function App() {
 
-    // ====== CÓDIGO DE ENTRADA POCOYÓ CORREGIDO ======
+// ====== CÓDIGO DE ENTRADA POCOYÓ CORREGIDO ======
   const [mostrarInvitacion, setMostrarInvitacion] = useState(false);
 
-  if (!mostrarInvitacion) {
+ 
+  // ====== FIN CÓDIGO DE ENTRADA CORREGIDO ======
+
+
+  const [section, setSection] = useState<Section>('hero');
+  const [confetti, setConfetti] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
+  const cd = useCountdown(PARTY.date);
+
+  const nav: { id: Section; label: string; icon: typeof Cake }[] = [
+    { id: 'hero', label: 'Inicio', icon: Cake },
+    { id: 'details', label: 'Detalles', icon: MapPin },
+    { id: 'countdown', label: 'Cuenta', icon: Clock },
+    { id: 'rsvp', label: 'Confirmar', icon: Gift },
+    { id: 'game', label: 'Juego', icon: PartyPopper },
+    { id: 'gallery', label: 'Galería', icon: Sparkles },
+    { id: 'guests', label: 'Invitados', icon: Users },
+  ];
+
+  const fireConfetti = () => {
+    setConfetti(true);
+    setTimeout(() => setConfetti(false), 4000);
+  };
+
+   if (!mostrarInvitacion) {
     return (
       <div style={{
-        backgroundColor: '#ffffff',
+        backgroundColor: '#6e6969',
         height: '100vh',
         width: '100vw',
         display: 'flex',
@@ -821,29 +845,6 @@ export default function App() {
       </div>
     );
   }
-  // ====== FIN CÓDIGO DE ENTRADA CORREGIDO ======
-
-
-  const [section, setSection] = useState<Section>('hero');
-  const [confetti, setConfetti] = useState(false);
-  const [refreshKey, setRefreshKey] = useState(0);
-  const cd = useCountdown(PARTY.date);
-
-  const nav: { id: Section; label: string; icon: typeof Cake }[] = [
-    { id: 'hero', label: 'Inicio', icon: Cake },
-    { id: 'details', label: 'Detalles', icon: MapPin },
-    { id: 'countdown', label: 'Cuenta', icon: Clock },
-    { id: 'rsvp', label: 'Confirmar', icon: Gift },
-    { id: 'game', label: 'Juego', icon: PartyPopper },
-    { id: 'gallery', label: 'Galería', icon: Sparkles },
-    { id: 'guests', label: 'Invitados', icon: Users },
-  ];
-
-  const fireConfetti = () => {
-    setConfetti(true);
-    setTimeout(() => setConfetti(false), 4000);
-  };
-
   return (
     <div
       className="min-h-screen font-sans text-[#1B2A4A]"
