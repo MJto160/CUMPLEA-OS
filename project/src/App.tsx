@@ -728,6 +728,100 @@ function PocoyoMascot({ size = 120 }: { size?: number }) {
 }
 
 export default function App() {
+    // ====== CÓDIGO DE ENTRADA POCOYÓ ======
+  const [mostrarInvitacion, setMostrarInvitacion] = useState(false);
+
+  if (!mostrarInvitacion) {
+    return (
+      <div style={{
+        backgroundColor: '#ffffff',
+        height: '100vh',
+        width: '100vw',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontFamily: 'Arial, sans-serif',
+        padding: '20px',
+        textAlign: 'center',
+        overflow: 'hidden',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        zIndex: 99999
+      }}>
+        {/* Globos flotando */}
+        <div style={{ position: 'absolute', top: '20px', left: '20px', fontSize: '40px', animation: 'float 3s ease-in-out infinite' }}>🎈</div>
+        <div style={{ position: 'absolute', top: '30px', right: '30px', fontSize: '45px', animation: 'float 4s ease-in-out infinite' }}>🎈</div>
+
+        <h1 style={{
+          color: '#009be1',
+          fontSize: '2.5rem',
+          fontWeight: 'bold',
+          marginBottom: '5px',
+          textTransform: 'uppercase'
+        }}>
+          ¡Una Nueva Sorpresa!
+        </h1>
+        
+        <p style={{ color: '#555555', fontSize: '1.2rem', marginBottom: '35px' }}>
+          Mira quién cumple años...
+        </p>
+
+        {/* Imagen interactiva de Pocoyó */}
+        <div 
+          onClick={() => setMostrarInvitacion(true)}
+          style={{
+            cursor: 'pointer',
+            maxWidth: '350px',
+            width: '100%',
+            marginBottom: '40px',
+            animation: 'bounce 2s infinite'
+          }}
+        >
+          <img 
+            src="https://squarespace-cdn.com" 
+            alt="Pocoyó y sus amigos" 
+            style={{ width: '100%', height: 'auto', display: 'block' }}
+          />
+        </div>
+
+        {/* Botón interactivo */}
+        <div 
+          onClick={() => setMostrarInvitacion(true)}
+          style={{
+            cursor: 'pointer',
+            display: 'inline-block',
+            fontSize: '1.6rem',
+            fontWeight: 'bold',
+            padding: '12px 40px',
+            color: '#ffffff',
+            backgroundColor: '#ffc000',
+            borderRadius: '50px',
+            boxShadow: '0 8px 15px rgba(255, 192, 0, 0.3)',
+            textTransform: 'uppercase',
+          }}
+        >
+          ✨ ¡Vamos a jugar! ✨
+        </div>
+
+        <style>{`
+          @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-7px); }
+          }
+          @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(3deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+          }
+        `}</style>
+      </div>
+    );
+  }
+  // ====== FIN CÓDIGO DE ENTRADA ======
+
   const [section, setSection] = useState<Section>('hero');
   const [confetti, setConfetti] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
