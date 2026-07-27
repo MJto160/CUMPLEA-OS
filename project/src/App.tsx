@@ -728,7 +728,8 @@ function PocoyoMascot({ size = 120 }: { size?: number }) {
 }
 
 export default function App() {
-    // ====== CÓDIGO DE ENTRADA POCOYÓ ======
+
+    // ====== CÓDIGO DE ENTRADA POCOYÓ CORREGIDO ======
   const [mostrarInvitacion, setMostrarInvitacion] = useState(false);
 
   if (!mostrarInvitacion) {
@@ -768,25 +769,25 @@ export default function App() {
           Mira quién cumple años...
         </p>
 
-        {/* Imagen interactiva de Pocoyó */}
+        {/* CONTENEDOR CENTRAL ANIMADO CON LOGO SEGURO DE POCOYÓ */}
         <div 
           onClick={() => setMostrarInvitacion(true)}
           style={{
             cursor: 'pointer',
-            maxWidth: '350px',
+            maxWidth: '280px',
             width: '100%',
             marginBottom: '40px',
             animation: 'bounce 2s infinite'
           }}
         >
           <img 
-            src="https://squarespace-cdn.com" 
+            src="https://wikimedia.org" 
             alt="Pocoyó y sus amigos" 
             style={{ width: '100%', height: 'auto', display: 'block' }}
           />
         </div>
 
-        {/* Botón interactivo */}
+        {/* Botón festivo interactivo */}
         <div 
           onClick={() => setMostrarInvitacion(true)}
           style={{
@@ -820,7 +821,8 @@ export default function App() {
       </div>
     );
   }
-  // ====== FIN CÓDIGO DE ENTRADA ======
+  // ====== FIN CÓDIGO DE ENTRADA CORREGIDO ======
+
 
   const [section, setSection] = useState<Section>('hero');
   const [confetti, setConfetti] = useState(false);
