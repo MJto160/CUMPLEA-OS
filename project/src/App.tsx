@@ -1,3 +1,4 @@
+import miFondo from './fondo.jpg';
 import { useEffect, useMemo, useState } from 'react';
 import {
   Calendar,
@@ -732,9 +733,7 @@ export default function App() {
 // ====== CÓDIGO DE ENTRADA POCOYÓ CORREGIDO ======
   const [mostrarInvitacion, setMostrarInvitacion] = useState(false);
 
- 
   // ====== FIN CÓDIGO DE ENTRADA CORREGIDO ======
-
 
   const [section, setSection] = useState<Section>('hero');
   const [confetti, setConfetti] = useState(false);
@@ -756,10 +755,14 @@ export default function App() {
     setTimeout(() => setConfetti(false), 4000);
   };
 
-   if (!mostrarInvitacion) {
+    // ====== CÓDIGO DE ENTRADA CON TU BANNER ======
+  if (!mostrarInvitacion) {
     return (
       <div style={{
-        backgroundColor: '#6e6969',
+        backgroundImage: `url(${miFondo})`, // <-- Aquí carga tu foto "CumpleañosBanner"
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
         height: '100vh',
         width: '100vw',
         display: 'flex',
@@ -775,7 +778,7 @@ export default function App() {
         left: 0,
         zIndex: 99999
       }}>
-        {/* Globos flotando */}
+        {/* Globos flotando en las esquinas */}
         <div style={{ position: 'absolute', top: '20px', left: '20px', fontSize: '40px', animation: 'float 3s ease-in-out infinite' }}>🎈</div>
         <div style={{ position: 'absolute', top: '30px', right: '30px', fontSize: '45px', animation: 'float 4s ease-in-out infinite' }}>🎈</div>
 
@@ -784,34 +787,17 @@ export default function App() {
           fontSize: '2.5rem',
           fontWeight: 'bold',
           marginBottom: '5px',
-          textTransform: 'uppercase'
+          textTransform: 'uppercase',
+          textShadow: '2px 2px 4px rgba(255,255,255,0.8)' // Sombra blanca para que resalte sobre tu fondo
         }}>
           ¡Una Nueva Sorpresa!
         </h1>
         
-        <p style={{ color: '#555555', fontSize: '1.2rem', marginBottom: '35px' }}>
+        <p style={{ color: '#555555', fontSize: '1.2rem', marginBottom: '35px', fontWeight: 'bold', textShadow: '1px 1px 2px rgba(255,255,255,0.8)' }}>
           Mira quién cumple años...
         </p>
 
-        {/* CONTENEDOR CENTRAL ANIMADO CON LOGO SEGURO DE POCOYÓ */}
-        <div 
-          onClick={() => setMostrarInvitacion(true)}
-          style={{
-            cursor: 'pointer',
-            maxWidth: '280px',
-            width: '100%',
-            marginBottom: '40px',
-            animation: 'bounce 2s infinite'
-          }}
-        >
-          <img 
-            src="https://wikimedia.org" 
-            alt="Pocoyó y sus amigos" 
-            style={{ width: '100%', height: 'auto', display: 'block' }}
-          />
-        </div>
-
-        {/* Botón festivo interactivo */}
+        {/* Botón festivo interactivo estilo Pato */}
         <div 
           onClick={() => setMostrarInvitacion(true)}
           style={{
@@ -831,11 +817,6 @@ export default function App() {
         </div>
 
         <style>{`
-          @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-15px); }
-            60% { transform: translateY(-7px); }
-          }
           @keyframes float {
             0% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-10px) rotate(3deg); }
@@ -845,6 +826,9 @@ export default function App() {
       </div>
     );
   }
+  // ====== FIN CÓDIGO DE ENTRADA ======
+
+
   return (
     <div
       className="min-h-screen font-sans text-[#1B2A4A]"
