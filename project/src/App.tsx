@@ -877,34 +877,46 @@ export default function App() {
       <main className="max-w-3xl mx-auto px-4 py-6 space-y-6 min-h-screen bg-cover bg-center"style={{ backgroundImage: `url(${miFondoMov})` }}>
           {/* HERO */} 
 {section === 'hero' && ( 
-  <div className="text-center -mt-6 mx-2 space-y-6 animate-fadein bg-white/85 backdrop-blur-sm p-6 rounded-3xl shadow-xl border border-white/40">
+  <div className="text-center -mt-6 mx-2 space-y-6 animate-fadein">
     <div className="inline-block bg-[#F5D547] px-6 py-2 rounded-full -rotate-2 shadow-md"> 
       <p className="font-black text-[#1B2A4A] text-lg">¡Estás invitado!</p> 
     </div> 
 
-    <h1 className="text-5xl sm:text-7xl font-black leading-tight" style={{ color: POCOYO_COLORS.navy }} > 
+    <h1 
+      className="text-5xl sm:text-7xl font-black leading-tight drop-shadow-lg" 
+      style={{ 
+        color: POCOYO_COLORS.navy,
+        textShadow: '2px 2px 0px #fff, -2px -2px 0px #fff, 2px -2px 0px #fff, -2px 2px 0px #fff, 4px 4px 8px rgba(0,0,0,0.5)'
+      }} 
+    > 
       ¡Fiesta de <span className="text-[#E8472D]">{PARTY.age}</span>{' '} 
       <br /> añito! 
     </h1> 
 
-    <p className="text-xl font-bold text-[#1B2A4A]"> 
+    <p 
+      className="text-xl font-bold text-white tracking-wide"
+      style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.9), -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000, 1px 1px 0px #000' }}
+    > 
       Vamos a celebrar el cumpleaños de 
     </p> 
 
-    <div className="inline-block bg-[#3CA8E0] text-white px-8 py-3 rounded-2xl rotate-1 shadow-lg"> 
+    <div className="inline-block bg-[#3CA8E0] text-white px-8 py-3 rounded-2xl rotate-1 shadow-lg border-2 border-white"> 
       <p className="text-3xl font-black">{PARTY.childName}</p> 
     </div> 
 
-    <div className="flex flex-col sm:flex-row justify-center gap-3 pt-2"> 
-      <button onClick={() => setSection('rsvp')} className="bg-[#E8472D] text-white px-6 py-3 rounded-full font-black hover:scale-105 transition shadow-lg flex items-center justify-center gap-2" > 
+    <div className="flex flex-col sm:flex-row justify-center gap-3 pt-2 px-4"> 
+      <button onClick={() => setSection('rsvp')} className="bg-[#E8472D] text-white px-6 py-3 rounded-full font-black hover:scale-105 transition shadow-lg flex items-center justify-center gap-2 border-2 border-white" > 
         <Gift size={20} /> Confirmar asistencia 
       </button> 
-      <button onClick={fireConfetti} className="bg-[#F5D547] text-[#1B2A4A] px-6 py-3 rounded-full font-black hover:scale-105 transition shadow-lg flex items-center justify-center gap-2" > 
+      <button onClick={fireConfetti} className="bg-[#F5D547] text-[#1B2A4A] px-6 py-3 rounded-full font-black hover:scale-105 transition shadow-lg flex items-center justify-center gap-2 border-2 border-white" > 
         <PartyPopper size={20} /> ¡Celebrar! 
       </button> 
     </div> 
 
-    <p className="text-sm text-[#1B2A4A]/80 font-bold pt-2"> 
+    <p 
+      className="text-sm text-white font-black pt-2"
+      style={{ textShadow: '1px 1px 3px rgba(0, 0, 0, 0.9), -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000, 1px 1px 0px #000' }}
+    > 
       Desliza por el menú para ver todos los detalles 
     </p> 
   </div> 
