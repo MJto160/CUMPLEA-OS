@@ -757,17 +757,22 @@ export default function App() {
 
     // ====== CÓDIGO DE ENTRADA CON TU BANNER ====== //
 
+    // ========================================================
+  // DISEÑO ADAPTATIVO REFORZADO (SIN IMÁGENES EXTERNAS PARA MÓVIL)
+  // ========================================================
   if (!mostrarInvitacion) {
     const esMovil = typeof window !== 'undefined' && window.innerWidth < 768;
 
     return (
       <div style={{
+        // Si es móvil usa un fondo celeste Pocoyó con círculos sutiles en CSS; si es laptop usa tu banner
+        backgroundColor: esMovil ? '#e3f2fd' : 'transparent',
         backgroundImage: esMovil 
-          ? 'url("https://freepik.com")' 
-          : `url(${miFondo})`, 
-        backgroundSize: esMovil ? 'cover' : '100% 100%',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
+          ? 'radial-gradient(#bbdefb 20%, transparent 20%), radial-gradient(#bbdefb 20%, transparent 20%)' 
+          : `url(${miFondo})`,
+        backgroundSize: esMovil ? '20px 20px' : '100% 100%',
+        backgroundPosition: esMovil ? '0 0, 10px 10px' : 'center',
+        backgroundRepeat: esMovil ? 'repeat' : 'no-repeat',
         height: '100vh',
         width: '100vw',
         display: 'flex',
@@ -784,19 +789,19 @@ export default function App() {
         zIndex: 99999,
         boxSizing: 'border-box'
       }}>
-        {/* Globos flotando en las esquinas */}
+        {/* Globos flotando (Cambiados a Emojis de texto puro para que carguen siempre) */}
         <div style={{ position: 'absolute', top: '20px', left: '20px', fontSize: '40px', animation: 'float 3s ease-in-out infinite' }}>🎈</div>
         <div style={{ position: 'absolute', top: '30px', right: '30px', fontSize: '45px', animation: 'float 4s ease-in-out infinite' }}>🎈</div>
 
         {/* TÍTULOS SUPERIORES */}
-        <div>
+        <div style={{ zIndex: 2 }}>
           <h1 style={{
             color: '#009be1',
-            fontSize: esMovil ? '2rem' : '2.5rem',
+            fontSize: esMovil ? '2.2rem' : '2.5rem',
             fontWeight: 'bold',
             marginBottom: '5px',
             textTransform: 'uppercase',
-            textShadow: esMovil ? 'none' : '2px 2px 4px rgba(255,255,255,0.8)'
+            textShadow: '2px 2px 0px #ffffff' // Sombra blanca sólida para que se lea perfecto
           }}>
             ¡Una Nueva Sorpresa!
           </h1>
@@ -806,20 +811,27 @@ export default function App() {
             fontSize: '1.2rem', 
             fontWeight: 'bold',
             margin: 0,
-            textShadow: esMovil ? 'none' : '1px 1px 2px rgba(255,255,255,0.8)'
+            textShadow: '1px 1px 0px #ffffff'
           }}>
             Mira quién cumple años...
           </p>
         </div>
 
-        {/* IMAGEN CENTRAL (Solo aparece si es celular para rellenar el espacio limpio) */}
+        {/* CONTENEDOR CENTRAL: Usamos texto temático grande estilizado en vez de imagen externa rota */}
         {esMovil && (
-          <div style={{ maxWidth: '240px', width: '100%', animation: 'bounce 2s infinite' }}>
-            <img 
-              src="https://wikimedia.org" 
-              alt="Pocoyó" 
-              style={{ width: '100%', height: 'auto' }}
-            />
+          <div style={{ 
+            animation: 'bounce 2s infinite', 
+            zIndex: 2,
+            backgroundColor: '#ffffff',
+            padding: '20px 30px',
+            borderRadius: '20px',
+            boxShadow: '0 8px 20px rgba(0,0,0,0.06)',
+            border: '3px solid #009be1'
+          }}>
+            <span style={{ fontSize: '4rem', display: 'block', marginBottom: '5px' }}>🎂</span>
+            <span style={{ color: '#009be1', fontSize: '1.8rem', fontWeight: 'bold', display: 'block', textTransform: 'uppercase' }}>
+              ¡Fiesta de Matías!
+            </span>
           </div>
         )}
 
@@ -837,7 +849,8 @@ export default function App() {
             borderRadius: '50px',
             boxShadow: '0 8px 15px rgba(255, 192, 0, 0.4)',
             textTransform: 'uppercase',
-            marginBottom: '20px'
+            marginBottom: '20px',
+            zIndex: 2
           }}
         >
           ✨ ¡Vamos a jugar! ✨
@@ -858,6 +871,7 @@ export default function App() {
       </div>
     );
   }
+
 
   // ====== FIN CÓDIGO DE ENTRADA ======
 
