@@ -878,7 +878,7 @@ export default function App() {
 
         {/* HERO */}
         {section === 'hero' && (
-           <>
+           
            <div className="inline-block -mt-10 bg-[#F5D547] px-6 py-2 rounded-full -rotate-2 shadow-md">
               <p className="font-black text-[#1B2A4A] text-lg">¡Estás invitado!</p>
             </div>
