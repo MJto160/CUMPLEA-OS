@@ -1062,12 +1062,19 @@ export default function App() {
             <Heart size={20} fill={POCOYO_COLORS.pink} />
             <Heart size={20} fill={POCOYO_COLORS.red} />
           </div>
-          <p className="font-black text-[#1B2A4A]">
-            ¡Te esperamos en la fiesta de {PARTY.childName}!
-          </p>
-          <p className="text-xs text-[#1B2A4A]/50 font-medium">
-            Hecho con cariño para los invitados
-          </p>
+                <p 
+        className="text-xl font-black text-white px-4"
+        style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.9), -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000, 1px 1px 0px #000' }}
+      >
+        ¡Te esperamos en la fiesta de {PARTY.childName}!
+      </p>
+      <p 
+        className="text-xs font-bold text-white mt-1 opacity-90"
+        style={{ textShadow: '1px 1px 3px rgba(0, 0, 0, 0.9), -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000, 1px 1px 0px #000' }}
+      >
+        Hecho con cariño para los invitados
+      </p>
+
         </footer>
       </main>
     </div>
