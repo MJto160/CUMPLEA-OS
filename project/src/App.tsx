@@ -292,12 +292,17 @@ function RsvpForm({ onSaved }: { onSaved: () => void }) {
     }
     setSaving(true);
     setError(null);
-    const { error: err } = await supabase.from('rsvps').insert({
-      guest_name: name.trim(),
-      attending,
-      guests_count: Math.max(1, count),
-      message: message.trim() || null,
-    });
+    
+      const { error: err } = await supabase.from('rsvps').insert([
+      {
+        guest_name: name.trim(),
+        attending,
+        guests_count: Math.max(1, count),
+        message: message.trim() || null,
+      }
+    ]);
+
+
     setSaving(false);
     if (err) {
       setError('No se pudo guardar. Inténtalo de nuevo.');
