@@ -1,6 +1,6 @@
 import miFondoMovil from './pocoyo.jpg';
 import miFondo from './fondo.jpg';
-import miFondomov from './esta.jpg';
+import miFondoMov from './esta.jpg';
 import { useEffect, useMemo, useState } from 'react';
 import {
   Calendar,
