@@ -24,16 +24,16 @@ import { supabase, type Rsvp } from '@/lib/supabase';
 
 // ====== CONFIGURACIÓN DE LA FIESTA ======
 const PARTY = {
-  childName: 'Matías',
-  age: 3,
-  date: '2026-08-15T15:00:00',
-  dateLabel: 'Sábado 15 de Agosto, 2026',
-  timeLabel: '3:00 PM - 7:00 PM',
-  place: 'Salón Infantil "Mundo Mágico"',
-  address: 'Av. de los Juegos 123, Ciudad',
-  whatsappNumber: '5491100000000', // formato internacional, sin + ni espacios
-  mapUrl: 'https://maps.google.com/?q=Av+de+los+Juegos+123',
-  adminPassword: 'matias2026', // contraseña para la vista privada de la anfitriona
+  childName: 'Benjamín',
+  age: 1,
+  date: '2026-08-22T14:30:00',
+  dateLabel: 'Sábado 22 de Agosto, 2026',
+  timeLabel: '2:30 PM',
+  place: 'Jardin de eventos el INJERTAL',
+  address: 'Diagonal Sur 14, San Juan del Obispo',
+  whatsappNumber: '3744 0925', // formato internacional, sin + ni espacios
+  mapUrl: 'https://maps.app.goo.gl/8FgENLMDcZe8ZvkB7',
+  adminPassword: 'benjamin2026', // contraseña para la vista privada de la anfitriona
 };
 
 const waLink = (text: string) =>
@@ -836,7 +836,7 @@ export default function App() {
             zIndex: 2
           }}
         >
-          ✨ ¡Vamos a jugar! ✨
+          ✨ ¡UNETE A LA FIESTA! ✨
         </div>
 
         <style>{`
@@ -962,31 +962,6 @@ export default function App() {
                   Ver ubicación en el mapa
                 </a>
               </div>
-            </div>
-
-            <div className="rounded-3xl bg-white/90 backdrop-blur p-6 shadow-xl border-4 border-[#F5D547]">
-              <h3 className="text-xl font-black text-[#1B2A4A] mb-3 flex items-center gap-2">
-                <Cake className="text-[#E8472D]" /> Habrá...
-              </h3>
-              <ul className="grid grid-cols-2 gap-3">
-                {[
-                  { icon: Cake, label: 'Torta y tortitas', color: '#E8472D' },
-                  { icon: Music, label: 'Música y baile', color: '#3CA8E0' },
-                  { icon: Gift, label: 'Regalos y sorpresas', color: '#F5D547' },
-                  { icon: PartyPopper, label: 'Juegos y diversión', color: '#7BC043' },
-                ].map((item, i) => {
-                  const Icon = item.icon;
-                  return (
-                    <li
-                      key={i}
-                      className="flex items-center gap-2 bg-[#FFFDF5] rounded-xl p-3 border-2 border-[#F5D547]/40"
-                    >
-                      <Icon size={20} style={{ color: item.color }} />
-                      <span className="font-bold text-sm text-[#1B2A4A]">{item.label}</span>
-                    </li>
-                  );
-                })}
-              </ul>
             </div>
 
             <div className="rounded-3xl bg-[#3CA8E0] p-6 shadow-xl text-center">
