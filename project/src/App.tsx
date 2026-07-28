@@ -1,3 +1,4 @@
+import miFondoMovil from './pocoyo.jpg';
 import miFondo from './fondo.jpg';
 import { useEffect, useMemo, useState } from 'react';
 import {
@@ -755,30 +756,27 @@ export default function App() {
     setTimeout(() => setConfetti(false), 4000);
   };
 
-    // ====== CÓDIGO DE ENTRADA CON TU BANNER ====== //
-
     // ========================================================
-  // DISEÑO ADAPTATIVO REFORZADO (SIN IMÁGENES EXTERNAS PARA MÓVIL)
+  // DISEÑO ADAPTATIVO CON DOS IMÁGENES PROPIAS (MÓVIL Y LAPTOP)
   // ========================================================
   if (!mostrarInvitacion) {
     const esMovil = typeof window !== 'undefined' && window.innerWidth < 768;
 
     return (
       <div style={{
-        // Si es móvil usa un fondo celeste Pocoyó con círculos sutiles en CSS; si es laptop usa tu banner
-        backgroundColor: esMovil ? '#e3f2fd' : 'transparent',
+        // Si es móvil carga tu foto vertical; si es laptop carga tu banner acostado
         backgroundImage: esMovil 
-          ? 'radial-gradient(#bbdefb 20%, transparent 20%), radial-gradient(#bbdefb 20%, transparent 20%)' 
+          ? `url(${miFondoMovil})` 
           : `url(${miFondo})`,
-        backgroundSize: esMovil ? '20px 20px' : '100% 100%',
-        backgroundPosition: esMovil ? '0 0, 10px 10px' : 'center',
-        backgroundRepeat: esMovil ? 'repeat' : 'no-repeat',
+        backgroundSize: '100% 100%', // Encaja exacta en cualquier pantalla
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
         height: '100vh',
         width: '100vw',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'space-between', // Separa los títulos del botón
         fontFamily: 'Arial, sans-serif',
         padding: esMovil ? '60px 20px' : '40px 20px',
         textAlign: 'center',
@@ -789,7 +787,7 @@ export default function App() {
         zIndex: 99999,
         boxSizing: 'border-box'
       }}>
-        {/* Globos flotando (Cambiados a Emojis de texto puro para que carguen siempre) */}
+        {/* Globos flotando en las esquinas */}
         <div style={{ position: 'absolute', top: '20px', left: '20px', fontSize: '40px', animation: 'float 3s ease-in-out infinite' }}>🎈</div>
         <div style={{ position: 'absolute', top: '30px', right: '30px', fontSize: '45px', animation: 'float 4s ease-in-out infinite' }}>🎈</div>
 
@@ -801,7 +799,7 @@ export default function App() {
             fontWeight: 'bold',
             marginBottom: '5px',
             textTransform: 'uppercase',
-            textShadow: '2px 2px 0px #ffffff' // Sombra blanca sólida para que se lea perfecto
+            textShadow: '2px 2px 4px rgba(255,255,255,0.9)' // Sombra blanca gruesa por si tu imagen tiene colores fuertes
           }}>
             ¡Una Nueva Sorpresa!
           </h1>
@@ -811,29 +809,14 @@ export default function App() {
             fontSize: '1.2rem', 
             fontWeight: 'bold',
             margin: 0,
-            textShadow: '1px 1px 0px #ffffff'
+            textShadow: '1px 1px 2px rgba(255,255,255,0.9)'
           }}>
             Mira quién cumple años...
           </p>
         </div>
 
-        {/* CONTENEDOR CENTRAL: Usamos texto temático grande estilizado en vez de imagen externa rota */}
-        {esMovil && (
-          <div style={{ 
-            animation: 'bounce 2s infinite', 
-            zIndex: 2,
-            backgroundColor: '#ffffff',
-            padding: '20px 30px',
-            borderRadius: '20px',
-            boxShadow: '0 8px 20px rgba(0,0,0,0.06)',
-            border: '3px solid #009be1'
-          }}>
-            <span style={{ fontSize: '4rem', display: 'block', marginBottom: '5px' }}>🎂</span>
-            <span style={{ color: '#009be1', fontSize: '1.8rem', fontWeight: 'bold', display: 'block', textTransform: 'uppercase' }}>
-              ¡Fiesta de Matías!
-            </span>
-          </div>
-        )}
+        {/* NOTA: Dejamos el espacio del centro totalmente vacío para que luzcan los personajes de tu foto 'pocoyo.jpg' */}
+        {esMovil && <div style={{ height: '20px' }}></div>}
 
         {/* BOTÓN INTERACTIVO INFERIOR */}
         <div 
@@ -847,7 +830,7 @@ export default function App() {
             color: '#ffffff',
             backgroundColor: '#ffc000',
             borderRadius: '50px',
-            boxShadow: '0 8px 15px rgba(255, 192, 0, 0.4)',
+            boxShadow: '0 8px 15px rgba(255, 192, 0, 0.5)',
             textTransform: 'uppercase',
             marginBottom: '20px',
             zIndex: 2
@@ -862,18 +845,10 @@ export default function App() {
             50% { transform: translateY(-10px) rotate(3deg); }
             100% { transform: translateY(0px) rotate(0deg); }
           }
-          @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-12px); }
-            60% { transform: translateY(-6px); }
-          }
         `}</style>
       </div>
     );
   }
-
-
-  // ====== FIN CÓDIGO DE ENTRADA ======
 
 
   return (
