@@ -479,37 +479,7 @@ function GuestTotals({ refreshKey }: { refreshKey: number }) {
       active = false;
     };
   }, [refreshKey]);
-
-  return (
-    <div className="rounded-3xl bg-white/90 backdrop-blur p-6 shadow-xl border-4 border-[#F49AC4] text-center">
-      <h3 className="text-2xl font-black text-[#1B2A4A] mb-4 flex items-center justify-center gap-2">
-        <Users className="text-[#F49AC4]" /> ¿Quiénes van a venir?
-      </h3>
-      {loading ? (
-        <p className="text-[#1B2A4A]/60 font-medium py-4">Cargando...</p>
-      ) : stats && stats.families > 0 ? (
-        <>
-          <div className="flex gap-4 mb-4">
-            <div className="flex-1 bg-[#7BC043]/15 rounded-2xl p-4">
-              <p className="text-4xl font-black text-[#7BC043]">{stats.families}</p>
-              <p className="text-sm font-bold text-[#1B2A4A]/70">Familias confirmadas</p>
-            </div>
-            <div className="flex-1 bg-[#3CA8E0]/15 rounded-2xl p-4">
-              <p className="text-4xl font-black text-[#3CA8E0]">{stats.people}</p>
-              <p className="text-sm font-bold text-[#1B2A4A]/70">Personas en total</p>
-            </div>
-          </div>
-          <p className="text-sm text-[#1B2A4A]/60 font-medium">
-            ¡Ya son varios los que se sumaron a la fiesta! ¿Te animás a confirmar?
-          </p>
-        </>
-      ) : (
-        <p className="text-[#1B2A4A]/60 font-medium py-4">
-          Aún no hay confirmaciones. ¡Sé el primero en sumarte!
-        </p>
-      )}
-    </div>
-  );
+    return null;
 }
 
 // Private admin view — full guest list protected by password
