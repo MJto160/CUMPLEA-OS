@@ -875,46 +875,41 @@ export default function App() {
       </nav>
 
       <main className="max-w-3xl mx-auto px-4 py-6 space-y-6 min-h-screen bg-cover bg-center"style={{ backgroundImage: `url(${miFondoMov})` }}>
+          {/* HERO */} 
+{section === 'hero' && ( 
+  <div className="text-center space-y-6 animate-fadein">
+    <div className="inline-block -mt-10 bg-[#F5D547] px-6 py-2 rounded-full -rotate-2 shadow-md"> 
+      <p className="font-black text-[#1B2A4A] text-lg">¡Estás invitado!</p> 
+    </div> 
 
-        {/* HERO */}
-        {section === 'hero' && (
-           
-           <div className="inline-block -mt-10 bg-[#F5D547] px-6 py-2 rounded-full -rotate-2 shadow-md">
-              <p className="font-black text-[#1B2A4A] text-lg">¡Estás invitado!</p>
-            </div>
-            <h1
-              className="text-5xl sm:text-7xl font-black leading-tight"
-              style={{ color: POCOYO_COLORS.navy }}
-            >
-              ¡Fiesta de <span className="text-[#E8472D]">{PARTY.age}</span>{' '}
-              <br />
-              añito!
-            </h1>
-            <p className="text-xl font-bold text-[#1B2A4A]/80">
-              Vamos a celebrar el cumpleaños de
-            </p>
-            <div className="inline-block bg-[#3CA8E0] text-white px-8 py-3 rounded-2xl rotate-1 shadow-lg">
-              <p className="text-3xl font-black">{PARTY.childName}</p>
-            </div>
-            <div className="flex justify-center gap-3 pt-2">
-              <button
-                onClick={() => setSection('rsvp')}
-                className="bg-[#E8472D] text-white px-6 py-3 rounded-full font-black hover:scale-105 transition shadow-lg flex items-center gap-2"
-              >
-                <Gift size={20} /> Confirmar asistencia
-              </button>
-              <button
-                onClick={fireConfetti}
-                className="bg-[#F5D547] text-[#1B2A4A] px-6 py-3 rounded-full font-black hover:scale-105 transition shadow-lg flex items-center gap-2"
-              >
-                <PartyPopper size={20} /> ¡Celebrar!
-              </button>
-            </div>
-            <p className="text-sm text-[#1B2A4A]/60 font-medium pt-2">
-              Desliza por el menú para ver todos los detalles
-            </p>
-          </div>
-        )}
+    <h1 className="text-5xl sm:text-7xl font-black leading-tight" style={{ color: POCOYO_COLORS.navy }} > 
+      ¡Fiesta de <span className="text-[#E8472D]">{PARTY.age}</span>{' '} 
+      <br /> añito! 
+    </h1> 
+
+    <p className="text-xl font-bold text-[#1B2A4A]/80"> 
+      Vamos a celebrar el cumpleaños de 
+    </p> 
+
+    <div className="inline-block bg-[#3CA8E0] text-white px-8 py-3 rounded-2xl rotate-1 shadow-lg"> 
+      <p className="text-3xl font-black">{PARTY.childName}</p> 
+    </div> 
+
+    <div className="flex justify-center gap-3 pt-2"> 
+      <button onClick={() => setSection('rsvp')} className="bg-[#E8472D] text-white px-6 py-3 rounded-full font-black hover:scale-105 transition shadow-lg flex items-center gap-2" > 
+        <Gift size={20} /> Confirmar asistencia 
+      </button> 
+      <button onClick={fireConfetti} className="bg-[#F5D547] text-[#1B2A4A] px-6 py-3 rounded-full font-black hover:scale-105 transition shadow-lg flex items-center gap-2" > 
+        <PartyPopper size={20} /> ¡Celebrar! 
+      </button> 
+    </div> 
+
+    <p className="text-sm text-[#1B2A4A]/60 font-medium pt-2"> 
+      Desliza por el menú para ver todos los detalles 
+    </p> 
+  </div> 
+)}
+
 
         {/* DETAILS */}
         {section === 'details' && (
