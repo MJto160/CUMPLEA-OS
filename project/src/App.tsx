@@ -755,12 +755,17 @@ export default function App() {
     setTimeout(() => setConfetti(false), 4000);
   };
 
-    // ====== CÓDIGO DE ENTRADA CON TU BANNER ======
+    // ====== CÓDIGO DE ENTRADA CON TU BANNER ====== //
+
   if (!mostrarInvitacion) {
+    const esMovil = typeof window !== 'undefined' && window.innerWidth < 768;
+
     return (
       <div style={{
-        backgroundImage: `url(${miFondo})`, // <-- Aquí carga tu foto "CumpleañosBanner"
-        backgroundSize: 'cover',
+        backgroundImage: esMovil 
+          ? 'url("https://freepik.com")' 
+          : `url(${miFondo})`, 
+        backgroundSize: esMovil ? 'cover' : '100% 100%',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         height: '100vh',
@@ -768,36 +773,57 @@ export default function App() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         fontFamily: 'Arial, sans-serif',
-        padding: '20px',
+        padding: esMovil ? '60px 20px' : '40px 20px',
         textAlign: 'center',
         overflow: 'hidden',
         position: 'fixed',
         top: 0,
         left: 0,
-        zIndex: 99999
+        zIndex: 99999,
+        boxSizing: 'border-box'
       }}>
         {/* Globos flotando en las esquinas */}
         <div style={{ position: 'absolute', top: '20px', left: '20px', fontSize: '40px', animation: 'float 3s ease-in-out infinite' }}>🎈</div>
         <div style={{ position: 'absolute', top: '30px', right: '30px', fontSize: '45px', animation: 'float 4s ease-in-out infinite' }}>🎈</div>
 
-        <h1 style={{
-          color: '#009be1',
-          fontSize: '2.5rem',
-          fontWeight: 'bold',
-          marginBottom: '5px',
-          textTransform: 'uppercase',
-          textShadow: '2px 2px 4px rgba(255,255,255,0.8)' // Sombra blanca para que resalte sobre tu fondo
-        }}>
-          ¡Una Nueva Sorpresa!
-        </h1>
-        
-        <p style={{ color: '#555555', fontSize: '1.2rem', marginBottom: '35px', fontWeight: 'bold', textShadow: '1px 1px 2px rgba(255,255,255,0.8)' }}>
-          Mira quién cumple años...
-        </p>
+        {/* TÍTULOS SUPERIORES */}
+        <div>
+          <h1 style={{
+            color: '#009be1',
+            fontSize: esMovil ? '2rem' : '2.5rem',
+            fontWeight: 'bold',
+            marginBottom: '5px',
+            textTransform: 'uppercase',
+            textShadow: esMovil ? 'none' : '2px 2px 4px rgba(255,255,255,0.8)'
+          }}>
+            ¡Una Nueva Sorpresa!
+          </h1>
+          
+          <p style={{ 
+            color: '#555555', 
+            fontSize: '1.2rem', 
+            fontWeight: 'bold',
+            margin: 0,
+            textShadow: esMovil ? 'none' : '1px 1px 2px rgba(255,255,255,0.8)'
+          }}>
+            Mira quién cumple años...
+          </p>
+        </div>
 
-        {/* Botón festivo interactivo estilo Pato */}
+        {/* IMAGEN CENTRAL (Solo aparece si es celular para rellenar el espacio limpio) */}
+        {esMovil && (
+          <div style={{ maxWidth: '240px', width: '100%', animation: 'bounce 2s infinite' }}>
+            <img 
+              src="https://wikimedia.org" 
+              alt="Pocoyó" 
+              style={{ width: '100%', height: 'auto' }}
+            />
+          </div>
+        )}
+
+        {/* BOTÓN INTERACTIVO INFERIOR */}
         <div 
           onClick={() => setMostrarInvitacion(true)}
           style={{
@@ -805,12 +831,13 @@ export default function App() {
             display: 'inline-block',
             fontSize: '1.6rem',
             fontWeight: 'bold',
-            padding: '12px 40px',
+            padding: '12px 50px',
             color: '#ffffff',
             backgroundColor: '#ffc000',
             borderRadius: '50px',
-            boxShadow: '0 8px 15px rgba(255, 192, 0, 0.3)',
+            boxShadow: '0 8px 15px rgba(255, 192, 0, 0.4)',
             textTransform: 'uppercase',
+            marginBottom: '20px'
           }}
         >
           ✨ ¡Vamos a jugar! ✨
@@ -822,10 +849,16 @@ export default function App() {
             50% { transform: translateY(-10px) rotate(3deg); }
             100% { transform: translateY(0px) rotate(0deg); }
           }
+          @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-12px); }
+            60% { transform: translateY(-6px); }
+          }
         `}</style>
       </div>
     );
   }
+
   // ====== FIN CÓDIGO DE ENTRADA ======
 
 
