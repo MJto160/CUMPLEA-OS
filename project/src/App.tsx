@@ -878,11 +878,8 @@ export default function App() {
 
         {/* HERO */}
         {section === 'hero' && (
-          <div className="text-center space-y-6 animate-fadein">
-            <div className="flex justify-center animate-bounce-slow">
-              <PocoyoMascot size={140} />
-            </div>
-            <div className="inline-block bg-[#F5D547] px-6 py-2 rounded-full -rotate-2 shadow-md">
+           <>
+           <div className="inline-block -mt-10 bg-[#F5D547] px-6 py-2 rounded-full -rotate-2 shadow-md">
               <p className="font-black text-[#1B2A4A] text-lg">¡Estás invitado!</p>
             </div>
             <h1
