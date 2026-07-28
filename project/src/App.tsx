@@ -396,14 +396,31 @@ function RsvpForm({ onSaved }: { onSaved: () => void }) {
             <label className="block text-sm font-bold text-[#1B2A4A] mb-1">
               ¿Cuántas personas? (incluyéndote)
             </label>
-            <input
-              type="number"
-              min={1}
-              max={10}
-              value={count}
-              onChange={(e) => setCount(parseInt(e.target.value) || 1)}
-              className="w-24 px-4 py-3 rounded-xl border-2 border-[#3CA8E0]/30 focus:border-[#3CA8E0] outline-none font-medium text-[#1B2A4A]"
-            />
+                      <div className="flex items-center justify-center gap-4 mt-2">
+            {/* Botón de Menos */}
+            <button
+              type="button"
+              onClick={() => setCount(Math.max(1, count - 1))}
+              className="w-12 h-12 bg-slate-100 rounded-full font-bold text-2xl flex items-center justify-center text-slate-600 hover:bg-slate-200 active:scale-95 transition"
+            >
+              -
+            </button>
+            
+            {/* El número de personas grande */}
+            <span className="text-2xl font-black w-12 text-center text-slate-800">
+              {count}
+            </span>
+
+            {/* Botón de Más */}
+            <button
+              type="button"
+              onClick={() => setCount(Math.min(10, count + 1))} // El límite máximo es 10 igual que tenía tu input viejo
+              className="w-12 h-12 bg-sky-100 rounded-full font-bold text-2xl flex items-center justify-center text-sky-600 hover:bg-sky-200 active:scale-95 transition"
+            >
+              +
+            </button>
+          </div>
+
           </div>
         )}
         <div>
@@ -897,7 +914,7 @@ export default function App() {
             >
               ¡Fiesta de <span className="text-[#E8472D]">{PARTY.age}</span>{' '}
               <br />
-              añitos!
+              añito!
             </h1>
             <p className="text-xl font-bold text-[#1B2A4A]/80">
               Vamos a celebrar el cumpleaños de
