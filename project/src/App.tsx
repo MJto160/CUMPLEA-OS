@@ -1,5 +1,6 @@
 import miFondoMovil from './pocoyo.jpg';
 import miFondo from './fondo.jpg';
+import miFondomov from './esta.jpg';
 import { useEffect, useMemo, useState } from 'react';
 import {
   Calendar,
@@ -873,7 +874,8 @@ export default function App() {
         </div>
       </nav>
 
-      <main className="max-w-3xl mx-auto px-4 py-6 space-y-6">
+      <main className="max-w-3xl mx-auto px-4 py-6 space-y-6 min-h-screen bg-cover bg-center"style={{ backgroundImage: `url(${miFondoMov})` }}>
+
         {/* HERO */}
         {section === 'hero' && (
           <div className="text-center space-y-6 animate-fadein">
