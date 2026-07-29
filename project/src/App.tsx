@@ -11,6 +11,7 @@ import foto7 from './foto7.jpeg';
 import foto8 from './foto8.jpeg';
 import foto9 from './foto9.jpeg';
 import musicaPocoyo from './carrera.mp3'; // Usa el nombre exacto de tu archivo mp3
+import { motion, AnimatePresence } from 'framer-motion';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
@@ -869,6 +870,8 @@ export default function App() {
     );
   }
 
+  const seccionesOrden = ['hero', 'details', 'countdown', 'rsvp', 'game', 'gallery', 'guests'];
+
 
       return (
     <div
@@ -902,9 +905,31 @@ export default function App() {
         </div>
       </nav>
 
-      <main className="max-w-3xl mx-auto px-4 py-6 space-y-6 min-h-screen bg-cover bg-center"style={{ backgroundImage: `url(${miFondoMov})` }}>
-          {/* HERO */} 
-{section === 'hero' && ( 
+        <main className="max-w-3xl mx-auto px-4 py-6 space-y-6 min-h-screen bg-cover bg-center overflow-x-hidden relative" style={{ backgroundImage: `url(${miFondo})` }}>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={section}
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -30 }}
+          transition={{ duration: 0.15 }}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.2}
+          onDragEnd={(_e: any, info: any) => {
+          const currentIndex = seccionesOrden.indexOf(section);
+          if (info.offset.x < -80 && currentIndex < seccionesOrden.length - 1) {
+            setSection(seccionesOrden[currentIndex + 1] as any);
+          }
+          if (info.offset.x > 80 && currentIndex > 0) {
+            setSection(seccionesOrden[currentIndex - 1] as any);
+          }
+        }}
+
+          className="w-full min-h-screen"
+        >
+          {/* HERO */}
+          {section === 'hero' && (
   <div className="text-center -mt-6 mx-2 space-y-6 animate-fadein">
     <div className="inline-block bg-[#F5D547] px-6 py-2 rounded-full -rotate-2 shadow-md"> 
       <p className="font-black text-[#1B2A4A] text-lg">¡Estás invitado!</p> 
@@ -1103,8 +1128,11 @@ export default function App() {
         Hecho con cariño para los invitados
       </p>
 
-        </footer>
-      </main>
-    </div>
+              </footer>
+    </motion.div>
+  </AnimatePresence>
+</main>
+</div>
+
   );
 }
