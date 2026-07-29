@@ -10,7 +10,9 @@ import foto6 from './foto6.jpeg';
 import foto7 from './foto7.jpeg';
 import foto8 from './foto8.jpeg';
 import foto9 from './foto9.jpeg';
-import { useEffect, useMemo, useState } from 'react';
+import musicaPocoyo from './musica.mp3'; // Usa el nombre exacto de tu archivo mp3
+
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   Calendar,
   Clock,
@@ -725,16 +727,40 @@ function PocoyoMascot({ size = 120 }: { size?: number }) {
 }
 
 export default function App() {
-
 // ====== CÓDIGO DE ENTRADA POCOYÓ CORREGIDO ======
   const [mostrarInvitacion, setMostrarInvitacion] = useState(false);
-
   // ====== FIN CÓDIGO DE ENTRADA CORREGIDO ======
-
   const [section, setSection] = useState<Section>('hero');
   const [confetti, setConfetti] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
   const cd = useCountdown(PARTY.date);
+
+//MODIFIQUE AUDIO
+  const segundaSeccionRef = useRef<HTMLDivElement>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    audioRef.current = new Audio(musicaPocoyo);
+    audioRef.current.loop = true;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && audioRef.current) {
+          audioRef.current.play().catch(err => console.log("Interacción requerida:", err));
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (segundaSeccionRef.current) observer.observe(segundaSeccionRef.current);
+
+    return () => {
+      if (audioRef.current) audioRef.current.pause();
+      observer.disconnect();
+    };
+  }, []);
+
+
 
   const nav: { id: Section; label: string; icon: typeof Cake }[] = [
     { id: 'hero', label: 'Inicio', icon: Cake },
@@ -745,13 +771,11 @@ export default function App() {
     { id: 'gallery', label: 'Galería', icon: Sparkles },
     { id: 'guests', label: 'Invitados', icon: Users },
   ];
-
   const fireConfetti = () => {
     setConfetti(true);
     setTimeout(() => setConfetti(false), 4000);
   };
 
-    // ========================================================
   // DISEÑO ADAPTATIVO CON DOS IMÁGENES PROPIAS (MÓVIL Y LAPTOP)
   // ========================================================
   if (!mostrarInvitacion) {
@@ -846,11 +870,13 @@ export default function App() {
   }
 
 
-  return (
+      return (
     <div
+      ref={segundaSeccionRef}
       className="min-h-screen font-sans text-[#1B2A4A]"
       style={{ background: `linear-gradient(180deg, #BFE9F7 0%, #E8F6FB 40%, #FFFDF5 100%)` }}
     >
+
       <FloatingShapes />
       <Confetti fire={confetti} />
 
