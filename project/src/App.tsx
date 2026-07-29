@@ -1,6 +1,15 @@
 import miFondoMovil from './pocoyo.jpg';
 import miFondo from './fondo.jpg';
 import miFondoMov from './estaes.jpg';
+import foto1 from './foto1.jpg';
+import foto2 from './foto2.jpg';
+import foto3 from './foto3.jpg';
+import foto4 from './foto4.jpg';
+import foto5 from './foto5.jpg';
+import foto6 from './foto6.jpg';
+import foto7 from './foto7.jpg';
+import foto8 from './foto8.jpg';
+import foto9 from './foto9.jpg';
 import { useEffect, useMemo, useState } from 'react';
 import {
   Calendar,
@@ -595,14 +604,7 @@ function AdminGuestList({ refreshKey }: { refreshKey: number }) {
 
 // Photo gallery (Pocoyo-style stock illustrations from Pexels)
 function Gallery() {
-  const photos = [
-    'https://images.pexels.com/photos/1149797/pexels-photo-1149797.jpeg?auto=compress&cs=tinysrgb&w=600',
-    'https://images.pexels.com/photos/207962/pexels-photo-207962.jpeg?auto=compress&cs=tinysrgb&w=600',
-    'https://images.pexels.com/photos/2661176/pexels-photo-2661176.jpeg?auto=compress&cs=tinysrgb&w=600',
-    'https://images.pexels.com/photos/1488318/pexels-photo-1488318.jpeg?auto=compress&cs=tinysrgb&w=600',
-    'https://images.pexels.com/photos/1702373/pexels-photo-1702373.jpeg?auto=compress&cs=tinysrgb&w=600',
-    'https://images.pexels.com/photos/1024984/pexels-photo-1024984.jpeg?auto=compress&cs=tinysrgb&w=600',
-  ];
+  const photos = [foto1, foto2, foto3, foto4, foto5, foto6, foto7, foto8, foto9];
   const [active, setActive] = useState<string | null>(null);
   return (
     <div className="rounded-3xl bg-white/90 backdrop-blur p-6 shadow-xl border-4 border-[#F7941E]">
