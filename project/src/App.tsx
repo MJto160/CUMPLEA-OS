@@ -10,7 +10,7 @@ import foto6 from './foto6.jpeg';
 import foto7 from './foto7.jpeg';
 import foto8 from './foto8.jpeg';
 import foto9 from './foto9.jpeg';
-import musicaPocoyo from './musica.mp3'; // Usa el nombre exacto de tu archivo mp3
+import musicaPocoyo from './audio.mp3'; // Usa el nombre exacto de tu archivo mp3
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
