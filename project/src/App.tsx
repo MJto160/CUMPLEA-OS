@@ -739,12 +739,14 @@ export default function App() {
   const segundaSeccionRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-    useEffect(() => {
-    // Si la invitación ya está visible en pantalla (usuario hizo clic en Celebrar)
+      useEffect(() => {
     if (mostrarInvitacion) {
       audioRef.current = new Audio(musicaPocoyo);
       audioRef.current.loop = true;
       
+      // === LÍNEA NUEVA: Cambia el 5 por el segundo exacto donde inicia el ritmo ===
+      audioRef.current.currentTime = 2; 
+
       audioRef.current.play().catch(err => {
         console.log("El navegador bloqueó el audio:", err);
       });
@@ -756,6 +758,7 @@ export default function App() {
       }
     };
   }, [mostrarInvitacion]);
+
 
 
 
