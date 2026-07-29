@@ -739,26 +739,23 @@ export default function App() {
   const segundaSeccionRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  useEffect(() => {
-    audioRef.current = new Audio(musicaPocoyo);
-    audioRef.current.loop = true;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && audioRef.current) {
-          audioRef.current.play().catch(err => console.log("Interacción requerida:", err));
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (segundaSeccionRef.current) observer.observe(segundaSeccionRef.current);
+    useEffect(() => {
+    // Si la invitación ya está visible en pantalla (usuario hizo clic en Celebrar)
+    if (mostrarInvitacion) {
+      audioRef.current = new Audio(musicaPocoyo);
+      audioRef.current.loop = true;
+      
+      audioRef.current.play().catch(err => {
+        console.log("El navegador bloqueó el audio:", err);
+      });
+    }
 
     return () => {
-      if (audioRef.current) audioRef.current.pause();
-      observer.disconnect();
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
     };
-  }, []);
+  }, [mostrarInvitacion]);
 
 
 
