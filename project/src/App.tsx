@@ -1,15 +1,15 @@
 import miFondoMovil from './pocoyo.jpg';
 import miFondo from './fondo.jpg';
 import miFondoMov from './estaes.jpg';
-import foto1 from './foto1.jpg';
-import foto2 from './foto2.jpg';
-import foto3 from './foto3.jpg';
-import foto4 from './foto4.jpg';
-import foto5 from './foto5.jpg';
-import foto6 from './foto6.jpg';
-import foto7 from './foto7.jpg';
-import foto8 from './foto8.jpg';
-import foto9 from './foto9.jpg';
+import foto1 from './foto1.jpeg';
+import foto2 from './foto2.jpeg';
+import foto3 from './foto3.jpeg';
+import foto4 from './foto4.jpeg';
+import foto5 from './foto5.jpeg';
+import foto6 from './foto6.jpeg';
+import foto7 from './foto7.jpeg';
+import foto8 from './foto8.jpeg';
+import foto9 from './foto9.jpeg';
 import { useEffect, useMemo, useState } from 'react';
 import {
   Calendar,
