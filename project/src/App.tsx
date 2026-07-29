@@ -739,6 +739,8 @@ export default function App() {
 //MODIFIQUE AUDIO
   const segundaSeccionRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+
 
       useEffect(() => {
     if (mostrarInvitacion) {
@@ -760,6 +762,18 @@ export default function App() {
     };
   }, [mostrarInvitacion]);
 
+  useEffect(() => {
+    if (menuRef.current) {
+      const botonActivo = menuRef.current.querySelector(`[data-section="${section}"]`);
+      if (botonActivo) {
+        botonActivo.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'center'
+        });
+      }
+    }
+  }, [section]);
 
 
 
@@ -870,6 +884,8 @@ export default function App() {
     );
   }
 
+  
+
   const seccionesOrden = ['hero', 'details', 'countdown', 'rsvp', 'game', 'gallery', 'guests'];
 
 
@@ -885,12 +901,13 @@ export default function App() {
 
       {/* Top nav */}
       <nav className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b-2 border-[#3CA8E0]/20">
-        <div className="max-w-3xl mx-auto px-3 py-2 flex gap-1 overflow-x-auto no-scrollbar">
+        <div ref={menuRef} className="max-w-3xl mx-auto px-3 py-2 flex gap-1 overflow-x-auto no-scrollbar">
           {nav.map((n) => {
             const Icon = n.icon;
             return (
               <button
                 key={n.id}
+                data-section={n.id}
                 onClick={() => setSection(n.id)}
                 className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-sm font-bold whitespace-nowrap transition ${
                   section === n.id
